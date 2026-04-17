@@ -1,0 +1,24 @@
+# ── Core (required) ───────────────────────────────────────────────────────────
+opencv-python>=4.8.0
+mediapipe>=0.10.0
+numpy>=1.24.0
+
+# ── AI features (optional but recommended) ────────────────────────────────────
+# Shape detection uses only OpenCV — no extra package needed.
+
+# OCR — requires Tesseract binary installed separately.
+#   Linux:   sudo apt install tesseract-ocr
+#   macOS:   brew install tesseract
+#   Windows: https://github.com/UB-Mannheim/tesseract/wiki
+pytesseract>=0.3.10
+
+# ── Export ────────────────────────────────────────────────────────────────────
+fpdf2>=2.7.0
+
+# ── Voice commands ────────────────────────────────────────────────────────────
+SpeechRecognition>=3.10.0
+# pyaudio requires system audio libs:
+#   Linux:   sudo apt install python3-pyaudio portaudio19-dev
+#   macOS:   brew install portaudio && pip install pyaudio
+#   Windows: pip install pipwin && pipwin install pyaudio
+pyaudio>=0.2.13
