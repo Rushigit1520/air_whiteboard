@@ -1,4 +1,4 @@
-# AI Air Whiteboard
+# AI Air Whiteboard created by rushikesh farakate .
 
 > **⚠️ This project is not ready yet — currently working on it. Stay tuned for updates!**
 
@@ -149,3 +149,4 @@ When MediaPipe detects **two hands** both making a draw gesture, each hand draws
 | Voice not working | `pip install SpeechRecognition pyaudio`; check microphone permissions |
 | OCR poor results | Write larger; use white colour on black background |
 | Left-side drawing off | Already fixed — frame is mirrored before landmark extraction |
+
