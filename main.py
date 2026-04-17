@@ -44,9 +44,9 @@ from agents.ai_agent      import AIAgent
 from agents.control_agent import ControlAgent
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 #  Screen resolution detection
-# ─────────────────────────────────────────────────────────────────────────────
+
 
 def _screen_size() -> tuple[int, int]:
     """Return (width, height) of the primary monitor."""
@@ -61,9 +61,8 @@ def _screen_size() -> tuple[int, int]:
         return 1280, 720
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 #  Camera helper
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _open_camera(index: int, w: int, h: int):
     cap = cv2.VideoCapture(index)
@@ -76,9 +75,9 @@ def _open_camera(index: int, w: int, h: int):
     return cap
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 #  Camera preview rendering
-# ─────────────────────────────────────────────────────────────────────────────
+
 
 PREVIEW_W = 240
 PREVIEW_H = 180
@@ -113,9 +112,8 @@ def _draw_camera_preview(
     )
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 #  Main loop
-# ─────────────────────────────────────────────────────────────────────────────
 
 def main(args: argparse.Namespace):
     screen_w = args.width
@@ -126,7 +124,7 @@ def main(args: argparse.Namespace):
 
     print(f"[Air Whiteboard] Resolution: {screen_w}×{screen_h}")
 
-    # ── Init agents ───────────────────────────────────────────────────────────
+    # ── Init agents 
     gesture_agent = GestureAgent(max_hands=2)
     ai_agent      = AIAgent()
     canvas_agent  = CanvasAgent(screen_w, screen_h, ai_agent=ai_agent)
@@ -136,14 +134,14 @@ def main(args: argparse.Namespace):
     print(f"[Air Whiteboard] AI caps  -- shapes: OK  OCR: {'OK' if caps['ocr'] else 'NO (install pytesseract)'}  smooth: OK")
     print(f"[Air Whiteboard] Voice    -- {'OK enabled' if control_agent._voice_enabled else 'NO (install SpeechRecognition + pyaudio)'}")
 
-    # ── Camera ────────────────────────────────────────────────────────────────
+    # ── Camera
     try:
         cap = _open_camera(args.cam, 1280, 720)
     except RuntimeError as e:
         print(f"[Error] {e}")
         sys.exit(1)
 
-    # ── Window ────────────────────────────────────────────────────────────────
+    # ── Window 
     WIN = "AI Air Whiteboard"
     cv2.namedWindow(WIN, cv2.WINDOW_NORMAL)
     cv2.setWindowProperty(WIN, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
@@ -165,11 +163,11 @@ def main(args: argparse.Namespace):
         # Resize camera feed to match canvas dimensions
         cam_frame = cv2.resize(frame, (screen_w, screen_h))
 
-        # ── Gesture processing ────────────────────────────────────────────────
+        # ── Gesture processing
         gesture_info = gesture_agent.process(cam_frame)
         gesture = gesture_info.get("gesture", "idle")
 
-        # ── Zoom gesture handling ────────────────────────────────────────────
+        # ── Zoom gesture handling
         if gesture == "zoom":
             c1 = gesture_info.get("cursor")
             c2 = gesture_info.get("cursor2")
@@ -184,7 +182,7 @@ def main(args: argparse.Namespace):
             if canvas_agent._zoom_initial_dist is not None:
                 canvas_agent.end_zoom()
 
-        # ── OCR gesture handling (3 fingers held ~1 sec) ─────────────────────
+        # ── OCR gesture handling (3 fingers held ~1 sec) 
         if gesture == "ocr":
             ocr_hold_counter += 1
             if ocr_hold_counter == 30:     # ~1 second at 30fps
@@ -192,11 +190,11 @@ def main(args: argparse.Namespace):
         else:
             ocr_hold_counter = 0
 
-        # ── Canvas update (skip during confirmation, zoom, or OCR) ───────────
+        # ── Canvas update (skip during confirmation, zoom, or OCR) 
         if not control_agent.pending_action and gesture not in ("zoom", "ocr"):
             canvas_agent.update(gesture_info)
 
-        # ── Compose result frame ──────────────────────────────────────────────
+        # ── Compose result frame 
         result = canvas_agent.get_canvas()
 
         # Camera preview overlay
@@ -216,7 +214,7 @@ def main(args: argparse.Namespace):
 
         cv2.imshow(WIN, result)
 
-        # ── Keyboard input ────────────────────────────────────────────────────
+        # ── Keyboard input 
         key = cv2.waitKey(1) & 0xFF
 
         if key in (ord("q"), 27):       # Q or Esc → quit
