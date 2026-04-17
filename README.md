@@ -101,7 +101,6 @@ When a destructive gesture is held long enough, a confirmation popup appears:
 ## Keyboard Shortcuts
 
 | Key | Action |
-|---|---|
 | `Z` | Undo |
 | `Y` | Redo |
 | `S` | Save PNG |
@@ -114,7 +113,7 @@ When a destructive gesture is held long enough, a confirmation popup appears:
 | `X` | Toggle eraser size (32 / 60 px) |
 | `Q` / `Esc` | Quit |
 
----
+
 
 ## Voice Commands
 
@@ -142,7 +141,7 @@ When MediaPipe detects **two hands** both making a draw gesture, each hand draws
 ## Troubleshooting
 
 | Problem | Fix |
-|---|---|
+
 | Camera not opening | Try `--cam 1` or `--cam 2` |
 | Dotted lines | Update to latest version; ensure adequate lighting |
 | Gestures not detected | Ensure good lighting; keep hand 40–80 cm from camera |
