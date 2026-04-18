@@ -10,10 +10,10 @@ A full-screen, gesture-controlled, AI-powered whiteboard built with Python, Open
 
 | Category | Feature |
 |---|---|
-| **Gestures** | 1 finger → draw, 2 fingers → erase, open palm → clear (confirmed), 2 hands → save (confirmed) |
-| **Drawing** | Smooth continuous lines (no dots), interpolated strokes, EMA-smoothed cursor |
-| **Canvas** | Full-screen black canvas, 40-step undo/redo, 10-colour palette |
-| **AI** | Auto shape correction (circle, rect, triangle, line), Tesseract OCR, Gaussian smoothing |
+| **Gestures** | 1 finger → draw, 2 fingers → erase, open palm → clear (confirmed), 2 hands → save (confirmed) 
+| **Drawing** | Smooth continuous lines (no dots), interpolated strokes, EMA-smoothed cursor 
+| **Canvas** | Full-screen black canvas, 40-step undo/redo, 10-colour palette 
+| **AI** | Auto shape correction (circle, rect, triangle, line), Tesseract OCR, Gaussian smoothing 
 | **Voice** | "clear", "save", "undo", "redo", "camera", "ocr", "smooth" |
 | **Export** | PNG and PDF export |
 | **Multi-user** | Two hands draw simultaneously in different colours |
