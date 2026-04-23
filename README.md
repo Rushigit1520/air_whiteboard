@@ -1,6 +1,6 @@
 # AI Air Whiteboard created by rushikesh farakate .
 
-> **⚠️ This project is not ready yet — currently working on it. Stay tuned for updates!**
+>  This project is not ready yet — currently working on it. Stay tuned for updates!**
 
 A full-screen, gesture-controlled, AI-powered whiteboard built with Python, OpenCV, and MediaPipe.
 
@@ -130,7 +130,6 @@ Requires `SpeechRecognition` and `pyaudio`.
 | "ocr" / "read text" | Run OCR on canvas |
 | "smooth" | Smooth canvas |
 
----
 
 ## Multi-User Drawing
 
